@@ -61,11 +61,6 @@ const ProductScreen = ({match}) => {
               Add to Cart
             </Button>
           </ListGroup.Item>
-
-
-
-
-
         </ListGroup>
         </Card>
       </Col>
