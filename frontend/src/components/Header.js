@@ -7,10 +7,15 @@ const Header = () => {
     <header>
  <Navbar bg="light" expand="lg" collapseOnSelect>
   <Container>
+  {/* const icon = (
+    <span class='logo'>
+    <a href="/"><img src='techshop.png' alt='logo' style={{width:110, marginTop:-18, marginBottom:-28}} /></a> 
+    </span>
+  ) */}
 
   <LinkContainer to='/'>
-    <Navbar.Brand> 
-    {/* <a href="/"><img src='techshop.png' alt='logo' style={{width:110, marginTop:-18, marginBottom:-28}} /></a> */}
+    <Navbar.Brand>
+     {/* <a href="/"><img src='techshop.png' alt='logo' style={{width:110, marginTop:-18, marginBottom:-28}} /></a>  */}
     </Navbar.Brand>
     </LinkContainer>
 
