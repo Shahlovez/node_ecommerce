@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Shahlovez/mern_ecommerce#readme",
   "dependencies": {
+    "concurrently": "^7.1.0",
     "express": "^4.17.3"
   }
 }
