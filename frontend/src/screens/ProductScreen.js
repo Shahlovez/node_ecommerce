@@ -6,13 +6,12 @@ import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listProductDetails } from '../actions/productActions'
-import { productDetailsReducer } from '../reducers/productReducers'
 
 
 const ProductScreen = ({match}) => {
-const dispatch = useDispatch ()
+ const dispatch = useDispatch ()
 
-const productDetails = useSelector((state) = state.productDetails)
+const productDetails = useSelector(state => state.productDetails)
 const {loading, error, product } = productDetails
   
 useEffect(() =>{
@@ -25,7 +24,7 @@ useEffect(() =>{
     <Link className='btn btn-light my-3' to='/'>
       Go Back
     </Link> 
-    {loading ? <Loader /> : error ? <Message variant='danger'>{message}</Message> : (
+    {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
 
       <Row>
       <Col md={6}>
