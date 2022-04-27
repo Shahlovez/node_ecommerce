@@ -1,24 +1,28 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
-import { Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Card, Button, Form} from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listProductDetails } from '../actions/productActions'
 
 
-const ProductScreen = ({match}) => {
+const ProductScreen = ({ history, match}) => {
   const[qty, setQty] = useState(0)
  const dispatch = useDispatch ()
 
-const productDetails = useSelector(state => state.productDetails)
+const productDetails = useSelector((state) => state.productDetails)
 const {loading, error, product } = productDetails
   
 useEffect(() =>{
     dispatch (listProductDetails(match.params.id))
   }, [dispatch, match])
   
+  const addToCardHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${qty}`)
+
+  }
   
   return (
   <>
@@ -87,6 +91,7 @@ useEffect(() =>{
                   )}
           <ListGroup.Item>
             <Button 
+            onClick = {addToCardHandler}
             className='btn-block' 
             type='button'
             disabled={product.countInStock === 0}>
