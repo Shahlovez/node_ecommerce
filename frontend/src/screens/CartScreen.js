@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
-import { addToCart} from '../actions/cartActions'
+import { addToCart, removeFromCart} from '../actions/cartActions'
 
 
 const CartScreen = ({match, location, history}) => {
@@ -44,10 +44,10 @@ const CartScreen = ({match, location, history}) => {
           {cartItems.map((item) => (
               <ListGroup.Item key={item.product}>
                 <Row>
-                  <Col md={3}>
+                  <Col md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
-                  <Col md={4}>
+                  <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
                   <Col md={2}>${item.price}</Col>
@@ -110,8 +110,5 @@ const CartScreen = ({match, location, history}) => {
     </Row>
   )
 }
-
-          <ListGroup/>
-
 
 export default CartScreen
