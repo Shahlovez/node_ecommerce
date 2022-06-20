@@ -1,14 +1,22 @@
-import React, { useEffect} from 'react'
+import React, { useState, useEffect} from 'react'
+import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Louder'
-import { getOrderDetails } from '../actions/orderActions'
+import { 
+  getOrderDetails,
+ } from '../actions/orderActions'
+//  import {
+//   ORDER_PAY_RESET,
+//   ORDER_DELIVER_RESET,
+// } from '../constants/orderConstants'
 
-
-const OrderScreen = ({ match }) => {
+const OrderScreen = ({ match, history }) => {
     const orderId = match.params.id
+ 
+    const [sdkReady, setSdkReady] = useState(false)
 
     const dispatch = useDispatch()
 
