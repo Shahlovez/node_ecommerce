@@ -28,7 +28,7 @@ if(!loading){
 
   useEffect(() => {
       dispatch(getOrderDetails(orderId))
-  }, [])
+  }, [dispatch, orderId])
 
 
     const placeOrderHandler = () => {
