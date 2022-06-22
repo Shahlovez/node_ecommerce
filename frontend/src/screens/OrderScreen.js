@@ -5,9 +5,10 @@ import {Link} from 'react-router-dom'
 import {Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
-import Loader from '../components/Louder'
+import Loader from '../components/Loader'
 import { 
   getOrderDetails,
+  payOrder,
  } from '../actions/orderActions'
  import {
   ORDER_PAY_RESET,
@@ -63,19 +64,24 @@ if(!loading){
     }
   }, [dispatch, orderId, successPay, successDeliver, order])
 
-    const placeOrderHandler = () => {
-      dispatch(
-        createOrder({
-          orderItems: cart.cartItems,
-          shippingAddress: cart.shippingAddress,
-          paymentMethod: cart.paymentMethod,
-          itemsPrice: cart.itemsPrice,
-          shippingPrice: cart.shippingPrice,
-          taxPrice: cart.taxPrice,
-          totalPrice: cart.totalPrice,
-        })
-      )
-    }
+  const successPaymentHandler = (paymentResult) => {
+    console.log(paymentResult)
+    dispatch(payOrder(orderId, paymentResult))
+  }
+
+    // const placeOrderHandler = () => {
+    //   dispatch(
+    //     createOrder({
+    //       orderItems: cart.cartItems,
+    //       shippingAddress: cart.shippingAddress,
+    //       paymentMethod: cart.paymentMethod,
+    //       itemsPrice: cart.itemsPrice,
+    //       shippingPrice: cart.shippingPrice,
+    //       taxPrice: cart.taxPrice,
+    //       totalPrice: cart.totalPrice,
+    //     })
+    //   )
+    // }
    
     return loading ? (
         <Loader />
