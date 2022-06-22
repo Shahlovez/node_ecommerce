@@ -8,10 +8,10 @@ import Loader from '../components/Louder'
 import { 
   getOrderDetails,
  } from '../actions/orderActions'
-//  import {
-//   ORDER_PAY_RESET,
-//   ORDER_DELIVER_RESET,
-// } from '../constants/orderConstants'
+ import {
+  ORDER_PAY_RESET,
+  ORDER_DELIVER_RESET,
+} from '../constants/orderConstants'
 
 const OrderScreen = ({ match, history }) => {
     const orderId = match.params.id
@@ -22,6 +22,9 @@ const OrderScreen = ({ match, history }) => {
 
     const orderDetails = useSelector((state) => state.orderDetails)
     const { order, loading, error } = orderDetails
+
+    const orderPay = useSelector((state) => state.orderPay)
+    const {loading: loadingPay, success: successPay} = orderPay
 
    // Calculate prices 
 if(!loading){
@@ -46,9 +49,18 @@ if(!loading){
       }
       document.body.appendChild(script)
     }
+    if (!order || successPay || successDeliver || order._id !== orderId) {
+      dispatch({ type: ORDER_PAY_RESET })
+      dispatch({ type: ORDER_DELIVER_RESET })
       dispatch(getOrderDetails(orderId))
-  }, [dispatch, orderId])
-
+    } else if (!order.isPaid) {
+      if (!window.paypal) {
+        addPayPalScript()
+      } else {
+        setSdkReady(true)
+      }
+    }
+  }, [dispatch, orderId, successPay, successDeliver, order])
 
     const placeOrderHandler = () => {
       dispatch(
