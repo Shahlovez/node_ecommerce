@@ -19,7 +19,7 @@ import {
     USER_LIST_FAIL,
 
     } from "../constants/userConstants"
-    import {ORDER_LIST_MY_RESET} from '../components/orderConstants'
+import {ORDER_LIST_MY_RESET} from '../constants/orderConstants'
 
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -180,13 +180,13 @@ export const listUsers = () => async (dispatch, getState) => {
         payload: data,
       })
     } catch (error) {
-    //   const message =
-    //     error.response && error.response.data.message
-    //       ? error.response.data.message
-    //       : error.message
-    //   if (message === 'Not authorized, token failed') {
-    //     dispatch(logout())
-    //   }
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      if (message === 'Not authorized, token failed') {
+        dispatch(logout())
+      }
       dispatch({
         type: USER_LIST_FAIL,
         payload: message,
