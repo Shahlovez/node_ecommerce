@@ -228,7 +228,7 @@ export const listUsers = () => async (dispatch, getState) => {
     //   }
       dispatch({
         type: USER_DELETE_FAIL,
-        payload: message,
+        // payload: message,
       })
     }
   }
