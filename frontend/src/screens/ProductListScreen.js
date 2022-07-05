@@ -7,8 +7,8 @@ import Loader from '../components/Loader'
 import Paginate from '../components/Paginate'
 import {
   listProducts,
-//   deleteProduct,
-  createProduct,
+  deleteProduct,
+//   createProduct,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
@@ -27,13 +27,13 @@ const ProductListScreen = ({ history, match }) => {
     success: successDelete,
   } = productDelete
 
-  const productCreate = useSelector((state) => state.productCreate)
-  const {
-    loading: loadingCreate,
-    error: errorCreate,
-    success: successCreate,
-    product: createdProduct,
-  } = productCreate
+//   const productCreate = useSelector((state) => state.productCreate)
+//   const {
+//     loading: loadingCreate,
+//     error: errorCreate,
+//     success: successCreate,
+//     product: createdProduct,
+//   } = productCreate
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -60,11 +60,11 @@ const ProductListScreen = ({ history, match }) => {
     pageNumber,
   ])
 
-//   const deleteHandler = (id) => {
-//     if (window.confirm('Are you sure')) {
-//       dispatch(deleteProduct(id))
-//     }
-//   }
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure')) {
+      dispatch(deleteProduct(id))
+    }
+  }
 
   const createProductHandler = () => {
     dispatch(createProduct())
