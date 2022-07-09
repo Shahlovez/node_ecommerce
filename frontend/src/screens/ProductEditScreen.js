@@ -7,6 +7,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
@@ -25,6 +26,13 @@ const ProductEditScreen = ({ match, history }) => {
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
 
+  const productUpdate = useSelector((state) => state.productUpdate)
+  const { 
+      loading: loadingUpdate, 
+      error: errorUpdate, 
+      success:successUpdate
+    } = productUpdate
+  
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET })
@@ -42,7 +50,7 @@ const ProductEditScreen = ({ match, history }) => {
         setDescription(product.description)
       }
     }
-  }, [dispatch, history, productId, product])
+  }, [dispatch, history, productId, product, successUpdate])
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0]
