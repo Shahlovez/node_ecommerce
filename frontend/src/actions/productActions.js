@@ -17,6 +17,7 @@ import {
     PRODUCT_UPDATE_FAIL,
 
 } from '../constants/productConstants'
+import { logout } from './userActions'
 
 export const listProducts = () => async (dispatch) => {
     try {
