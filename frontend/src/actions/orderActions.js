@@ -155,13 +155,11 @@ import {
           Authorization: `Bearer ${userInfo.token}`,
         },
       }
-  
       const { data } = await axios.put(
         `/api/orders/${order._id}/deliver`,
         {},
         config
       )
-  
       dispatch({
         type: ORDER_DELIVER_SUCCESS,
         payload: data,
