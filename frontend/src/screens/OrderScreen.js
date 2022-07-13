@@ -47,6 +47,10 @@ if(!loading){
  }
 
   useEffect(() => {
+   if(!userInfo){
+     history.push('/login')
+   }
+
     const addPayPalScript = async () => {
       const { data: clientId } = await axios.get('/api/config/paypal')
       const script = document.createElement('script')
