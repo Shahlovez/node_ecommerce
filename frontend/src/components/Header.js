@@ -21,7 +21,11 @@ const Header = () => {
           <NavLink to="/">
             <Navbar.Brand>
               TechShop
-              {/* <a href="/"><img src='techshop.png' alt='logo' style={{width:110, marginTop:-18, marginBottom:-28}} /></a>  */}
+              <img
+                src={process.env.PUBLIC_URL + "/techshop.png"}
+                alt="logo"
+                style={{ width: 110, marginTop: -18, marginBottom: -28 }}
+              />
             </Navbar.Brand>
           </NavLink>
 
