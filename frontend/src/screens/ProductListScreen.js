@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { LinkContainer } from 'react-router-bootstrap'
+import { NavLink } from 'react-router-dom'
 import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-// import Paginate from '../components/Paginate'
+import Paginate from '../components/Paginate'
 import {
   listProducts,
   deleteProduct,
@@ -112,11 +112,11 @@ const ProductListScreen = ({ history, match }) => {
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>
-                    <LinkContainer to={`/admin/product/${product._id}/edit`}>
+                    <NavLink to={`/admin/product/${product._id}/edit`}>
                       <Button variant='light' className='btn-sm'>
                         <i className='fas fa-edit'></i>
                       </Button>
-                    </LinkContainer>
+                    </NavLink>
                     <Button
                       variant='danger'
                       className='btn-sm'
@@ -129,7 +129,7 @@ const ProductListScreen = ({ history, match }) => {
               ))}
             </tbody>
           </Table>
-          {/* <Paginate pages={pages} page={page} isAdmin={true} /> */}
+           <Paginate pages={pages} page={page} isAdmin={true} /> 
         </>
       )}
     </>
