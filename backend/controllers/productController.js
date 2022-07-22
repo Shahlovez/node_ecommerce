@@ -153,5 +153,5 @@ const getTopProducts = asyncHandler(async (req, res) => {
   createProduct,
   updateProduct, 
   createProductReview,
-  getTopProducts
+  getTopProducts,
     }
