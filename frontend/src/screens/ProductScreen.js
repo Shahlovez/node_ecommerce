@@ -10,7 +10,6 @@ import { listProductDetails, createProductReview } from '../actions/productActio
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 const ProductScreen = ({ history, match}) => {
-  // const params = useParams()
   const[qty, setQty] = useState(1)
   const[rating, setRating] = useState(0)
   const[comment, setComment] = useState('')
@@ -56,16 +55,18 @@ useEffect(() =>{
   }
   return (
   <>
-    <Link className='btn btn-light my-3' to='/'>
+    <Link className='btn btn-outline-primary my-2' to='/'>
       Go Back
     </Link> 
-    {loading ? (
-      <Loader /> 
-      ): error ?(
-         <Message variant='danger'>{error}</Message>
-         ) : (
+    {product && (!product._id || product._id !== match.params.id) ? (
+				<Loader />
+			) : error ? (
+				<Message dismissible variant='danger' duration={10}>
+					{error}
+				</Message>
+			) : product ? (
     <>
-    <Meta title={product.name}/>
+    <Meta title={`${product.name}`}/>
       <Row>
       <Col md={6}>
           <Image src={product.image} alt={product.name} fluid/>
@@ -205,8 +206,10 @@ useEffect(() =>{
             </Col>
           </Row>
         </>
+      ) : (
+        ''
       )}
-    </>
+      </>
   )
 }
 
