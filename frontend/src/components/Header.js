@@ -8,19 +8,19 @@ import SearchBox from "./SearchBox";
 
 const Header = () => {
   const dispatch = useDispatch();
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const logoutHandler = () => {
-    dispatch(logout());
-  };
+    dispatch(logout())
+  }
   return (
     <header>
       <Navbar bg="light" expand="lg" collapseOnSelect>
         <Container>
           <NavLink to="/">
             <Navbar.Brand>
-              TechShop
               <img
                 src={process.env.PUBLIC_URL + "/techshop.png"}
                 alt="logo"
@@ -31,8 +31,9 @@ const Header = () => {
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Route render={(history) => <SearchBox history={history} />} />
-            <Nav className="justify-content-end" style={{ width: "100%" }}>
+            <Route render={({history}) => <SearchBox history={history} />}/>
+            <Nav className='ms-auto nav-mobile'>
+            {/* <Nav className="justify-content-end" style={{ width: "100%" }}> */}
               <NavLink to="/cart">
                 <i className="fas fa-shopping-cart"></i>Cart
               </NavLink>
