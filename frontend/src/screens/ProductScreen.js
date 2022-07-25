@@ -15,15 +15,13 @@ const ProductScreen = ({ history, match}) => {
   const[rating, setRating] = useState(0)
   const[comment, setComment] = useState('')
 
-
-
- const dispatch = useDispatch ()
+const dispatch = useDispatch ()
 
 const productDetails = useSelector((state) => state.productDetails)
-const { userInfo} = productDetails
+const { loading, error, product } = productDetails
 
 const userLogin = useSelector((state) => state.userLogin)
-const {loading, error, product } = userLogin
+const {userInfo} = userLogin
   
 const productReviewCreate = useSelector((state) => state.productReviewCreate)
 const {
