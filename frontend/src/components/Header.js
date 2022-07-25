@@ -24,7 +24,7 @@ const Header = () => {
               <img
                 src={process.env.PUBLIC_URL + "/techshop.png"}
                 alt="logo"
-                style={{ width: 110, marginTop: -18, marginBottom: -28 }}
+                style={{ width: 150, marginTop: -18, marginBottom: -18 }}
               />
             </Navbar.Brand>
           </NavLink>
