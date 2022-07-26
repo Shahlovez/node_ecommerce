@@ -36,7 +36,7 @@ const App = () => {
         <Route path='/placeorder' component={PlaceOrderScreen} />
         <Route path='/shipping' component={ShippingScreen} />
         <Route path='/admin/userlist' component={UserListScreen}/>
-        <Route path='/admin/productlist' component={ProductListScreen}/>
+        <Route path='/admin/productlist' component={ProductListScreen} exact/>
         <Route path='/admin/productlist/:pageNumber' component={ProductListScreen} exact/>
         <Route path='/admin/orderlist' component={OrderListScreen}/>
         <Route path='/admin/product/:id/edit' component={ProductEditScreen}/> 
@@ -49,7 +49,7 @@ const App = () => {
     </main>
     <Footer/> 
     </Router>
-  );
+  )
 }
 
 export default App;
