@@ -12,7 +12,7 @@ import Meta from '../components/Meta'
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword;
-  const pageNumber = match.params.pageNumber || 1;
+  const pageNumber = Number(match.params.pageNumber) || 1;
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
