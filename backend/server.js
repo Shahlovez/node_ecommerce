@@ -1,6 +1,5 @@
 import dotenv from "dotenv";
 import express from "express";
-import mongoose from "mongoose";
 import morgan from "morgan";
 import path from "path";
 import connectDB from "./config /db.js";
@@ -12,20 +11,16 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
-connectDB();
 const app = express();
 
 const url = process.env.MONGO_URI;
-mongoose
-  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => app.listen(PORT, () => console.log("Server up and running!")))
-  .catch((error) => console.log(error.message));
-
-mongoose.set("useFindAndModify", false);
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+//connect to the mongoDB database
+connectDB();
 
 app.use(express.json());
 
@@ -50,7 +45,5 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 app.listen(
   PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
-  )
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 );
